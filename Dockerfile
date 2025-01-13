@@ -1,4 +1,4 @@
-FROM openjdk:21-slim
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} deployment/${JAR_FILE}
-ENTRYPOINT ["java","-jar","deployment/${JAR_FILE}"]
+FROM openjdk:21
+COPY target/*.jar deployment/app.jar
+COPY startup/*.sh deployment/start.sh
+ENTRYPOINT ["sh","deployment/start.sh"]
