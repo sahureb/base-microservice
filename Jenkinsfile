@@ -8,6 +8,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh 'java --version'
+                echo '===================================================================='
                 sh 'mvn clean install'
                 echo 'Building..'
             }
