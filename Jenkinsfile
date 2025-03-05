@@ -23,10 +23,12 @@ pipeline {
                 }
             }
         }
+        stage('Build image') {         
+       
+            app = docker.build("k8s-base-microservice/test")    
+        } 
         stage('Deploy') {
             steps {
-                sh 'docker build -t base-microservice .'
-                sh 'docker run -d -p 8888:8888 base-microservice'
                 echo 'Deploying....'
             }
         }
