@@ -6,12 +6,19 @@ pipeline {
     tools { 
         maven 'Maven 3.9.9' 
     }
+    environment {
+        DOCKER_CREDS = credentials('docker-cred')
+    }
     stages {
         stage('Build') {
             steps {
                 sh 'java --version'
                 echo '===================================================================='
-                sh 'mvn clean install jib:build'
+                sh 'mvn clean install jib:build \
+                -Djib.from.auth.username=$DOCKER_CREDS_USR \
+                -Djib.from.auth.password=$DOCKER_CREDS_PSW \
+                -Djib.to.auth.username=$DOCKER_CREDS_USR \
+                -Djib.to.auth.password=$DOCKER_CREDS_PSW'
                 echo 'Building..'
             }
         }
