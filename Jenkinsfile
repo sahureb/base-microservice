@@ -24,9 +24,12 @@ pipeline {
             }
         }
         stage('Build image') {         
-       
-            app = docker.build("k8s-base-microservice/test")    
-        } 
+            steps {
+                script {
+                    dockerImage = docker.build("k8s-base-microservice:${env.BUILD_NUMBER}")
+                }
+            }
+        }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
