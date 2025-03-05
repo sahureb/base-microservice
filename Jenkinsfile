@@ -18,6 +18,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                sh 'java -jar /var/jenkins_home/.m2/repository/com/cs/base-microservice/0.0.1-SNAPSHOT/base-microservice-0.0.1-SNAPSHOT.jar'
             }
         }
         stage('Deploy') {
