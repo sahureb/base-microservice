@@ -25,6 +25,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                sh 'docker build -t base-microservice .'
+                sh 'docker run -d -p 8888:8888 base-microservice'
                 echo 'Deploying....'
             }
         }
