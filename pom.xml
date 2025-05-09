@@ -29,7 +29,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2023.0.0</spring-cloud.version>
-		<jib-maven-plugin.version>3.4.4</jib-maven-plugin.version>
+		<jib-maven-plugin.version>3.4.5</jib-maven-plugin.version>
 	</properties>
 	<dependencies>
 		<dependency>
