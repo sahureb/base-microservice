@@ -16,7 +16,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn clean install
+      run: mvn clean install jib:build -Djib.from.auth.username=$DOCKER_CREDS_USR -Djib.from.auth.password=$DOCKER_CREDS_PSW -Djib.to.auth.username=$DOCKER_CREDS_USR -Djib.to.auth.password=$DOCKER_CREDS_PSW
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
    
